@@ -18,6 +18,8 @@ export class HomeComponent {
 
   groceryDetailsList:GroceryDetails[]=[];
 
+
+  
   groceryService:GroceryService=inject(GroceryService);
 
   
@@ -28,6 +30,7 @@ export class HomeComponent {
 
     this.groceryService.getAllGroceryDetails().then((groceryDetailsList:GroceryDetails[])=>{
 this.groceryDetailsList=groceryDetailsList
+
     })
   }
 
