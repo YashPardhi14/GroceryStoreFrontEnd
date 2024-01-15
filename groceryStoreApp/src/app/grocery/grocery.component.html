@@ -1,0 +1,17 @@
+<div class="container-card">
+    <mat-card class="example-card" >
+        <mat-card-header>
+          <mat-card-title-group>
+            <mat-card-title>{{grocerydetail.groceryName}}</mat-card-title>
+            <mat-card-subtitle>{{grocerydetail.costPerItem}}/KG</mat-card-subtitle>
+            <img mat-card-sm-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
+          </mat-card-title-group>
+        </mat-card-header>
+        <mat-card-content>
+         {{grocerydetail.groceryName}} is brought to you from the {{grocerydetail.grocerySource.stateName}} state with lot's of love.
+        </mat-card-content>
+        <button mat-raised-button [routerLink]="['/details',grocerydetail.item_id]">Show Details!</button>
+       
+      </mat-card>
+      
+</div>

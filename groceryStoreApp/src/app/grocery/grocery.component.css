@@ -1,0 +1,11 @@
+.example-card {
+    max-width: 400px;
+    margin-bottom: 8px;
+    margin: 10px;
+  
+  }
+
+  /* .container-card{
+    display: grid;
+    grid-template-columns:4fr 4fr 4fr;
+  } */

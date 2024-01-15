@@ -1,0 +1,68 @@
+
+
+<div class="details-container">
+    <h2 class="grocery-name">{{ groceryDetail?.groceryName }}</h2>
+  
+    <div class="details-section">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Cost</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p><strong>Price per item:</strong> ₹{{ groceryDetail?.costPerItem | number:'1.2-2' }}</p>
+        </mat-card-content>
+      </mat-card>
+  
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Availability</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p><strong>Items in stock:</strong> {{ groceryDetail?.groceryAmounts?.itemsAvailable }}</p>
+        </mat-card-content>
+
+        <mat-card-content>
+            <p><strong>Total Cost Of Available stock:</strong> {{ groceryDetail?.groceryAmounts?.totalCostOfItems }}</p>
+          </mat-card-content>
+      </mat-card>
+  
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Source</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p><strong>Source State:</strong> {{ groceryDetail?.grocerySource?.stateName }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <button mat-raised-button color="accent" (click)="showUpdatingForm()">Update</button>
+    <button mat-raised-button color="warn" >Delete</button>
+  </div>
+
+  <div class="form-container" *ngIf="showUpdateForm">
+    <form [formGroup]="updateForm">
+
+        <mat-form-field>
+          <input matInput type="text" id="groceryName" formControlName="groceryName">
+          <mat-label>Grocery Name</mat-label>
+        </mat-form-field><br>
+      
+        <mat-form-field>
+          <input matInput type="number" id="costPerItem" formControlName="costPerItem">
+          <mat-label>Cost Per Item</mat-label>
+        </mat-form-field>
+      
+        <mat-form-field>
+          <input matInput type="number" id="itemsAvailable" formControlName="itemsAvailable">
+          <mat-label>Items Available</mat-label>
+        </mat-form-field>
+      
+        <mat-form-field>
+          <input matInput type="text" id="stateName" formControlName="stateName">
+          <mat-label>State Name</mat-label>
+        </mat-form-field>
+      
+        <button mat-raised-button color="primary" type="submit" >Submit</button>
+        <button mat-raised-button (click)="showUpdatingForm()">Close</button>
+      </form>
+  </div>
