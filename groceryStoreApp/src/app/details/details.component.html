@@ -36,11 +36,11 @@
       </mat-card>
     </div>
     <button mat-raised-button color="accent" (click)="showUpdatingForm()">Update</button>
-    <button mat-raised-button color="warn" >Delete</button>
+    <button mat-raised-button color="warn" (click)="deleteGrocery(groceryDetail?.item_id)" >Delete</button>
   </div>
 
-  <div class="form-container" *ngIf="showUpdateForm">
-    <form [formGroup]="updateForm">
+  <div class="form-container" *ngIf="showUpdateForm" >
+    <form [formGroup]="updateForm" (submit)="updateFormSubmission()">
 
         <mat-form-field>
           <input matInput type="text" id="groceryName" formControlName="groceryName">

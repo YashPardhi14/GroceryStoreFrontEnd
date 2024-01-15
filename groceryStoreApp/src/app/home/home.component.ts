@@ -20,8 +20,28 @@ export class HomeComponent {
 
   groceryService:GroceryService=inject(GroceryService);
 
+  
+
   constructor(){
-    this.groceryDetailsList=this.groceryService.getAllGroceryDetails();
+    // this.groceryDetailsList=this.groceryService.getAllGroceryDetails();
+
+
+    this.groceryService.getAllGroceryDetails().then((groceryDetailsList:GroceryDetails[])=>{
+this.groceryDetailsList=groceryDetailsList
+    })
   }
+
+    //***************/ */
+// this.groceryService.getAllGroceryDetails().subscribe(
+//   (data)=>{
+// this.groceryDetailsList =data;
+//   },
+//   (error)=>{
+//     console.log('Error in fetching the data',error);
+//   }
+
+// );
+
+ 
 
 }

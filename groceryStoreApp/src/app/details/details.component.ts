@@ -37,7 +37,27 @@ showUpdatingForm(){
 constructor(){
   
   const groceryId =Number(this.routes.snapshot.params['item_id']);
-  this.groceryDetail=this.groceryService.getGroceryDetailsById(groceryId);
+
+  //for dummy testing....
+  // this.groceryDetail=this.groceryService.getGroceryDetailsById(groceryId);
+
+  this.groceryService.getGroceryDetailsById(groceryId).then(groceryDetail=>this.groceryDetail=groceryDetail)
+}
+
+updateFormSubmission(){
+  this.groceryService.updateGroceryDetails(
+    this.updateForm.value.groceryName ?? 'null',
+
+    Number(this.updateForm.value.costPerItem) ?? 0,
+    
+   Number( this.updateForm.value.itemsAvailable) ?? 0,
+    this.updateForm.value.stateName ?? 'null'
+  )
+}
+
+deleteGrocery(id:number|undefined){
+  this.groceryService.deleteById(id);
+
 }
 
 }
