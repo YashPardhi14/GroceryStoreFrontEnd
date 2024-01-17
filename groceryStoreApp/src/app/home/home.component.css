@@ -7,3 +7,17 @@
     
     justify-content: space-around;
   }
+
+  section {
+    display: flex; /* Arrange elements horizontally */
+    flex-direction: row; /* Align elements vertically */
+    align-items: center; /* Center elements horizontally */
+    padding: 20px; /* Add spacing for visual appeal */
+  }
+
+  button {
+    margin-right: 10px; /* Add spacing between buttons */
+  }
+  mat-select{
+    margin-right: 10px; /* Add spacing between buttons */
+  }

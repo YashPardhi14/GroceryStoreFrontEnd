@@ -2,11 +2,26 @@
 
 <section>
     <form>
-        <input type="text" placeholder="Filter by state"/>
+        <mat-form-field>
+            <mat-label>Select State</mat-label>
+           <mat-select >
+               
+              <mat-option *ngFor="let state of states" [value]="state.stateName">
+                {{ state.stateName }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
         <button mat-fab extended color="primary">
             <mat-icon>favorite</mat-icon>
            Search
           </button>
+
+          
+          <button mat-fab extended color="accent" routerLink="add-new-grocery">
+            <mat-icon>add</mat-icon>
+            add New Grocery
+          </button>
+         
        
     </form>
 </section>

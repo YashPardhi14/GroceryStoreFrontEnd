@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { ErrorComponent } from './error/error.component';
 import { HomeComponent } from './home/home.component';
 import { DetailsComponent } from './details/details.component';
+import { AddNewGroceryComponent } from './add-new-grocery/add-new-grocery.component';
 
 
 export const routes: Routes = [
@@ -16,11 +17,11 @@ export const routes: Routes = [
         path:'details/:item_id',
         component:DetailsComponent,
                     },
-                    // {
-                    //     path:'update',
-                    //     component:UpdateComponent,
+                    {
+                        path:'add-new-grocery',
+                        component:AddNewGroceryComponent,
         
-                    // },
+                    },
                     {
         path:'**',
         component:ErrorComponent ,

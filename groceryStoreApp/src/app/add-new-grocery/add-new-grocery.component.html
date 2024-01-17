@@ -1,1 +1,103 @@
-<p>add-new-grocery works!</p>
+<form [formGroup]="addGroceryForm" (ngSubmit)="onSubmit()">
+
+    <div>
+      <!-- <label for="groceryName">Grocery Name:</label>
+      <input type="text" id="groceryName" formControlName="groceryName"> -->
+
+      <mat-form-field>
+        <input matInput placeholder="Grocery Name" id="groceryName" formControlName="groceryName">
+      </mat-form-field>
+    
+      
+
+      <!-- <div *ngIf="groceryName.invalid && (groceryName.dirty || groceryName.touched)">
+        Grocery name is required.
+      </div> -->
+    </div>
+  
+    <div>
+      <!-- <label for="costPerItem">Cost Per Item:</label>
+      <input type="number" id="costPerItem" formControlName="costPerItem"> -->
+
+      <mat-form-field>
+        <input matInput type="number" placeholder="Cost Per Item" id="costPerItem" formControlName="costPerItem">
+      </mat-form-field>
+      <!-- <div *ngIf="costPerItem.invalid && (costPerItem.dirty || costPerItem.touched)">
+        Cost per item is required.
+      </div> -->
+    </div>
+  
+    <div formGroupName="groceryAmounts">
+      <!-- <label for="itemsAvailable">Items Available:</label>
+      <input type="number" id="itemsAvailable" formControlName="itemsAvailable"> -->
+
+      <mat-form-field>
+        <input matInput type="number" placeholder="Items Available" id="itemsAvailable" formControlName="itemsAvailable">
+      </mat-form-field>
+      <!-- <div *ngIf="groceryAmounts.get('itemsAvailable').invalid && (groceryAmounts.get('itemsAvailable').dirty || groceryAmounts.get('itemsAvailable').touched)">
+        Items available is required.
+      </div> -->
+    </div>
+  
+    <div formGroupName="grocerySource">
+      <!-- <label for="stateName">State Name:</label>
+      <input type="text" id="stateName" formControlName="stateName"> -->
+
+
+      <mat-form-field>
+        <mat-label>State Name</mat-label>
+        <mat-select formControlName="stateName">
+          <mat-option *ngFor="let state of states" [value]="state.stateName">
+            {{ state.stateName }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    
+    
+      <!-- <div *ngIf="grocerySource.get('stateName').invalid && (grocerySource.get('stateName').dirty || grocerySource.get('stateName').touched)">
+        State name is required.
+      </div> -->
+    </div>
+  
+    
+    <button mat-raised-button type="submit" color="primary">Add Grocery</button>
+    <!-- <button type="submit">Add Grocery</button> -->
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- </form>
+  <form [formGroup]="addGroceryForm" (ngSubmit)="onSubmit()">
+
+    <mat-form-field>
+      <input matInput placeholder="Grocery Name" id="groceryName" formControlName="groceryName">
+    </mat-form-field>
+  
+    <mat-form-field>
+      <input matInput type="number" placeholder="Cost Per Item" id="costPerItem" formControlName="costPerItem">
+    </mat-form-field>
+  
+    <mat-form-field>
+      <input matInput type="number" placeholder="Items Available" id="itemsAvailable" formControlName="itemsAvailable">
+    </mat-form-field>
+  
+    
+  </form> -->

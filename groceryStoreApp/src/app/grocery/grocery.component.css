@@ -5,6 +5,16 @@
   
   }
 
+  .example-card:hover {
+    transform: scale(1.05); /* Zoom in slightly */
+    border: 2px solid orange; /* Change border color */
+  }
+
+  .example-card:hover button {
+    background-color: #f57c00; /* Orange background */
+    color: white; /* White text */
+  }
+
   /* .container-card{
     display: grid;
     grid-template-columns:4fr 4fr 4fr;

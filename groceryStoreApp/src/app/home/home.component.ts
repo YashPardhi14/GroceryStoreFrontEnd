@@ -5,12 +5,17 @@ import {MatButtonModule} from '@angular/material/button';
 import { GroceryDetails } from '../grocery-details';
 import { CommonModule } from '@angular/common';
 import { GroceryService } from '../grocery.service';
+import { RouterLink } from '@angular/router';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { State } from '../state';
+
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [GroceryComponent,MatIconModule,MatButtonModule,CommonModule],
+  imports: [GroceryComponent,MatIconModule,MatButtonModule,CommonModule,RouterLink,MatInputModule,MatSelectModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -18,7 +23,7 @@ export class HomeComponent {
 
   groceryDetailsList:GroceryDetails[]=[];
 
-
+states:State[]=[];
   
   groceryService:GroceryService=inject(GroceryService);
 
@@ -31,6 +36,9 @@ export class HomeComponent {
     this.groceryService.getAllGroceryDetails().then((groceryDetailsList:GroceryDetails[])=>{
 this.groceryDetailsList=groceryDetailsList
 
+    }),
+    this.groceryService.getAllStates().then((state:State[])=>{
+      this.states=state
     })
   }
 

@@ -4,11 +4,12 @@ import { ActivatedRoute } from '@angular/router';
 import { GroceryService } from '../grocery.service';
 import { GroceryDetails } from '../grocery-details';
 import {MatCardModule} from '@angular/material/card';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
+import {State} from '../state';
 @Component({
   selector: 'app-details',
   standalone: true,
@@ -22,14 +23,26 @@ export class DetailsComponent {
 routes:ActivatedRoute=inject(ActivatedRoute)
 groceryService=inject(GroceryService)
 groceryDetail:GroceryDetails|undefined;
+id:number=0;
+states:State[]=[]
+
+
+ 
 
 updateForm=new FormGroup({
-  groceryName:new FormControl(''),
-  costPerItem:new FormControl(''),
-  itemsAvailable:new FormControl(''),
-  stateName:new FormControl('')
+  groceryName: new FormControl('',Validators.required),
+  costPerItem: new FormControl('',Validators.required),
+  groceryAmounts:new FormGroup( {
+    
+    itemsAvailable:new FormControl('',Validators.required)
+    
+  }),
+  grocerySource: new FormGroup({
+    source_id:new FormControl('')
+     
+  }),
 
-})
+});
 showUpdatingForm(){
   this.showUpdateForm=!this.showUpdateForm;
 }
@@ -37,22 +50,36 @@ showUpdatingForm(){
 constructor(){
   
   const groceryId =Number(this.routes.snapshot.params['item_id']);
-
+this.id=groceryId;
   //for dummy testing....
   // this.groceryDetail=this.groceryService.getGroceryDetailsById(groceryId);
 
-  this.groceryService.getGroceryDetailsById(groceryId).then(groceryDetail=>this.groceryDetail=groceryDetail)
+  this.groceryService.getGroceryDetailsById(groceryId).then(groceryDetail=>this.groceryDetail=groceryDetail),
+  this.groceryService.getAllStates().then((state:State[])=>{
+    this.states=state
+     })
 }
 
 updateFormSubmission(){
-  this.groceryService.updateGroceryDetails(
-    this.updateForm.value.groceryName ?? 'null',
 
-    Number(this.updateForm.value.costPerItem) ?? 0,
+const updatedGroceryDetails:GroceryDetails={
+
+  groceryName: this.updateForm.value.groceryName || '',
+  costPerItem: Number(this.updateForm.value.costPerItem) || 0,
+  groceryAmounts: {
     
-   Number( this.updateForm.value.itemsAvailable) ?? 0,
-    this.updateForm.value.stateName ?? 'null'
-  )
+    itemsAvailable: Number(this.updateForm.value.groceryAmounts?.itemsAvailable) || 0,
+    
+  },
+  grocerySource: {
+   
+    // stateName: this.updateForm.value.grocerySource?.stateName || '',
+    source_id:Number(this.updateForm.value.grocerySource?.source_id) || 0
+  },
+}
+
+
+  this.groceryService.updateGroceryDetails(updatedGroceryDetails,this.id)
 }
 
 deleteGrocery(id:number|undefined){

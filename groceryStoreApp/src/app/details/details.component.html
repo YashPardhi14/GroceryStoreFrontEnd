@@ -34,33 +34,63 @@
           <p><strong>Source State:</strong> {{ groceryDetail?.grocerySource?.stateName }}</p>
         </mat-card-content>
       </mat-card>
+      <button mat-raised-button color="accent" (click)="showUpdatingForm()">Update</button>
+      <button mat-raised-button color="warn" (click)="deleteGrocery(groceryDetail?.item_id)" >Delete</button>
     </div>
-    <button mat-raised-button color="accent" (click)="showUpdatingForm()">Update</button>
-    <button mat-raised-button color="warn" (click)="deleteGrocery(groceryDetail?.item_id)" >Delete</button>
+   
   </div>
 
   <div class="form-container" *ngIf="showUpdateForm" >
     <form [formGroup]="updateForm" (submit)="updateFormSubmission()">
 
-        <mat-form-field>
-          <input matInput type="text" id="groceryName" formControlName="groceryName">
-          <mat-label>Grocery Name</mat-label>
-        </mat-form-field><br>
+       
+
+        <div>
+         
+    
+          <mat-form-field>
+            <input matInput placeholder="Grocery Name" id="groceryName" formControlName="groceryName">
+          </mat-form-field>
+        
+          
+    
+         
+        </div>
       
-        <mat-form-field>
-          <input matInput type="number" id="costPerItem" formControlName="costPerItem">
-          <mat-label>Cost Per Item</mat-label>
-        </mat-form-field>
+        <div>
+          
+    
+          <mat-form-field>
+            <input matInput type="number" placeholder="Cost Per Item" id="costPerItem" formControlName="costPerItem">
+          </mat-form-field>
+         
+        </div>
       
-        <mat-form-field>
-          <input matInput type="number" id="itemsAvailable" formControlName="itemsAvailable">
-          <mat-label>Items Available</mat-label>
-        </mat-form-field>
+        <div formGroupName="groceryAmounts">
+          
+    
+          <mat-form-field>
+            <input matInput type="number" placeholder="Items Available" id="itemsAvailable" formControlName="itemsAvailable">
+          </mat-form-field>
+       
+        </div>
       
-        <mat-form-field>
-          <input matInput type="text" id="stateName" formControlName="stateName">
-          <mat-label>State Name</mat-label>
-        </mat-form-field>
+        <div formGroupName="grocerySource">
+         
+    
+    
+          <mat-form-field>
+            <mat-label>State Name</mat-label>
+            <mat-select formControlName="source_id">
+              <mat-option *ngFor="let state of states" [value]="state.source_id">
+                {{ state.stateName }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        
+        
+          
+        </div>
       
         <button mat-raised-button color="primary" type="submit" >Submit</button>
         <button mat-raised-button (click)="showUpdatingForm()">Close</button>

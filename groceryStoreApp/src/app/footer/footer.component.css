@@ -1,0 +1,46 @@
+.grocery-footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #f5f5f5; /* Adjust as needed */
+    padding: 20px;
+  }
+  
+  /* Sections and columns */
+  .container > div {
+    border-bottom: 1px solid #ddd; /* Optional separator */
+    margin-bottom: 15px;
+  }
+  
+  /* Text styling */
+  .grocery-footer h6 {
+    font-weight: bold;
+  }
+  
+  .grocery-footer ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .grocery-footer li {
+    margin-bottom: 5px;
+  }
+  
+  .grocery-footer a {
+    color: #333; /* Adjust link color */
+  }
+  
+  /* Icons and buttons */
+  .grocery-footer i {
+    font-size: 1.2em;
+    margin-right: 5px;
+  }
+  
+  .grocery-footer button {
+    background-color: #4CAF50; /* Adjust button color */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+  }
